@@ -1,6 +1,6 @@
 import helper
 
-
+# NOTE: hasn't been converted to smart runner
 def run(file_path: str) -> int:
     content = helper.read_input(file_path)
     lines = content.split("\n")

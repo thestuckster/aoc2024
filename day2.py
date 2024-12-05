@@ -1,5 +1,6 @@
 import helper
 
+# NOTE: method signature required for smart runner
 def run(reports: list[str]):
     safe_reports = 0
 
