@@ -1,4 +1,11 @@
-def read_input(file_path: str) -> list[str]:
+def read_input(day: int, test: bool = True) -> list[str]:
+    file_path = f"data/day{day}"
+    file_path += "/test.txt" if test else "/real.txt"
+
+    return _read_input(file_path)
+
+
+def _read_input(file_path: str) -> list[str]:
     try:
         with(open(file_path, "r") as file):
             return file.read().split("\n")

@@ -1,14 +1,31 @@
-import day1 as d1
-import day2 as d2
+import os
+import importlib
+
+import helper
+
 
 def main():
-    print("Hello from aoc2024!")
-    
-    # day1 = d1.run("data/day1/real.txt")
-    # print(day1)
+    problem_input = get_input()
+    day_str = get_current_day()
+    runner = importlib.import_module(day_str)
+    runner.run(problem_input)
 
-    day2 = d2.run("data/day2/real.txt")
-    print(day2)
+
+def get_input() -> list[str]:
+    # assume run is test unless specified
+    is_test = bool(os.environ.get("IS_TEST", "True"))
+    return helper.read_input(get_day(), test=is_test)
+
+def get_day() -> int:
+    # if no day is supplied assume you're running the most recent problem in the data folder
+    day_str = os.getenv("DAY", get_current_day())
+    if "day" in day_str:
+        return int(day_str.split("day")[1])
+    return int(day_str)
+
+
+def get_current_day() -> str:
+   return os.listdir("data").pop()
 
 
 if __name__ == "__main__":

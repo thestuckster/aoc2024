@@ -1,11 +1,8 @@
-from lib2to3.pgen2.tokenize import printtoken
-
 import helper
 
-def run(file_path: str):
+def run(reports: list[str]):
     safe_reports = 0
 
-    reports = helper.read_input(file_path)
     for report in reports:
         levels = report.split(" ")
         is_increasing = validate_increasing(levels)
